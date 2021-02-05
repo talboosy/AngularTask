@@ -1,7 +1,7 @@
     <div class="row">
         <div class="brand">Company Name</div>
         <span class="flex-expand"></span> 
-        <button *ngIf="service.isLoggedIn$ | async" nbButton status="primary" (click)="onLogout()">Logout</button>
+        <button *ngIf="service.verifyToken()" nbButton status="primary" (click)="onLogout()">Logout</button>
     </div>
 
 

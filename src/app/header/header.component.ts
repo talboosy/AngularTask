@@ -8,18 +8,25 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  // isLoggedIn= false;
+  isLoggedIn= false;
 
   constructor(private router: Router, public service:AuthService) { }
 
   ngOnInit(): void {
-    // this.isLoggedIn = this.service.isLoggedIn
-    // console.log(this.isLoggedIn)
+     this.isLoggedIn = this.service.verifyToken()
+     console.log(this.isLoggedIn)
+
   }
 
   onLogout() {
     this.service.isLoggedOut()
+    this.service.logout()
     this.router.navigate(['']);
+    localStorage.setItem('x-auth-token', '')
+
   }
+
+  
+
 
 }

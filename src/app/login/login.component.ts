@@ -17,7 +17,10 @@ export class LoginComponent implements OnInit {
 
   onSubmitLogin(form: NgForm) {
     this.service.login(form.value.email, form.value.password).subscribe((response)=> {
+      console.log(response)
+      const token = response.token
       this.service.isLogged()
+      localStorage.setItem('x-auth-token', token);
       this.router.navigate(['dashboard']);
   }, error => {
     console.log(error);

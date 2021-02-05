@@ -5,16 +5,19 @@
     overflow: hidden;
   } */
 
-  .headerTest {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  .flex-expand {
-    flex: 1 1 auto;
-  }
-  .row {
-    display: flex;
-    width: auto;
-  }
-  
+.headerTest {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.flex-expand {
+  flex: 1 1 auto;
+}
+.row {
+  display: flex;
+  width: 100%;
+}
+
+app-header {
+  width: 100%;
+}

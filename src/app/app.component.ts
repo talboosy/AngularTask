@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
 })
 export class AppComponent implements OnInit{
   isLoggedIn= false;
+  public globalData: any;
   constructor(private service:AuthService) { 
 
   }
@@ -16,6 +17,8 @@ export class AppComponent implements OnInit{
     // this.isLoggedIn = this.service.isLoggedIn
     // console.log(this.isLoggedIn)
     this.getDataFromAPI();
+    this.service.data = this.service.getUserData()
+    
   }
 
   getDataFromAPI() {

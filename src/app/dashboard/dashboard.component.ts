@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -8,10 +9,19 @@ import { AuthService } from '../auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private service: AuthService) { }
+  constructor(private service: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    var isAuthenticated = this.service.verifyToken()
+    console.log(isAuthenticated)
+    if(!isAuthenticated){
+      this.router.navigate([''])
+    }
+  }
 
+  getData() {
+    const data = this.service.getUserData()
+    // console.log(data)
   }
 
 }
