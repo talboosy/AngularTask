@@ -22,7 +22,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  public logIn() {
+  public isLogged() {
     this.isLoggedIn.next(true);
   }
 
@@ -33,7 +33,9 @@ export class AuthService {
   })
 }
 
-  public logOut() {
+
+
+  public isLoggedOut() {
     this.isLoggedIn.next(false);
   }
   getData() {
