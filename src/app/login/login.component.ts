@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   onSubmitLogin(form: NgForm) {
     this.service.login(form.value.email, form.value.password).subscribe((response)=> {
-      this.service.logIn()
+      this.service.isLogged()
       this.router.navigate(['dashboard']);
   }, error => {
     console.log(error);
