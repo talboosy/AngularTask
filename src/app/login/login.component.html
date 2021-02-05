@@ -1,0 +1,30 @@
+
+<section class="login">
+
+<nb-card size="tiny">
+    <form #f="ngForm" (ngSubmit)="onSubmitLogin(f)">
+        <input
+          nbInput
+          type="email"
+          placeholder="Email"
+          required
+          ngModel
+          name="email"
+          email
+          class="input"
+        />
+        <br />
+        <input
+        nbInput
+          type="password"
+          placeholder="Password"
+          required
+          ngModel
+          name="password"
+          class="input"
+        />
+        <br />
+      <button nbButton status="primary" type="submit" [disabled]="f.invalid" (click)="onSubmitLogin(f)">Login</button>
+    </form>
+</nb-card>
+</section>

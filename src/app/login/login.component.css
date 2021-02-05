@@ -1,0 +1,20 @@
+.login {
+    display: flex; 
+    justify-content:center; 
+    align-items:center;
+    padding: 5px;
+}
+
+.input {
+    padding:5px;
+}
+
+.nb-card, .size-tiny {
+    width: 500px;
+    align-items: center;
+    padding-top: 25px;
+}
+
+.size-medium {
+    margin-bottom: 10px;
+}

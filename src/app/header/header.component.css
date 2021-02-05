@@ -1,0 +1,20 @@
+/* .header {
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center;
+    overflow: hidden;
+  } */
+
+  .headerTest {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .flex-expand {
+    flex: 1 1 auto;
+  }
+  .row {
+    display: flex;
+    width: auto;
+  }
+  
