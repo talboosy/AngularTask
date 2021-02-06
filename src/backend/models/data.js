@@ -7,8 +7,7 @@ const Data = mongoose.model('Data', {
         required: true
     },
     timestamp: {
-        type: Date,
-        default: Date.now()
+        type: String,
     },
     value:{
         type: Number

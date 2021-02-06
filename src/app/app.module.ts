@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NbThemeModule, NbSidebarModule, NbLayoutModule, NbButtonModule, NbMenuModule, NbInputModule, NbCardModule } from '@nebular/theme';
+import { NbThemeModule, NbSidebarModule, NbLayoutModule, NbButtonModule, NbMenuModule, NbInputModule, NbCardModule, NbSelectModule } from '@nebular/theme';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
@@ -43,7 +43,8 @@ import { ChartComponent } from './chart/chart.component';
     FormsModule, 
     ReactiveFormsModule,
     NbCardModule,
-    HttpClientModule
+    HttpClientModule,
+    NbSelectModule
     // NbMenuModule.forRoot()
   ],
   providers: [ChartsService],
