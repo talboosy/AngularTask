@@ -6,10 +6,7 @@ const router = new express.Router()
 
 router.post('/datas', (req, res) => {
     var timestamp = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '') 
-    console.log(timestamp)
     const data = new Data({procedure: req.body.procedure, timestamp: timestamp, value: req.body.value })
-    // const data = new Data.create()
-    console.log(data)
     data.save().then(() => {
         res.status(201).send(data)
     }).catch((e) => {

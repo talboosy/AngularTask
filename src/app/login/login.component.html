@@ -1,8 +1,8 @@
 
 <section class="login">
-
 <nb-card size="tiny">
-    <form #f="ngForm" (ngSubmit)="onSubmitLogin(f)">
+
+    <form #f="ngForm" (ngSubmit)="onSubmitLogin(f)" class="form">
         <input
           nbInput
           type="email"
@@ -12,8 +12,9 @@
           name="email"
           email
           class="input"
+          id="email"
         />
-        <br />
+        <span class="error-text" *ngIf="f.controls.email.invalid && f.controls.email.touched">Email is invalid</span>
         <input
         nbInput
           type="password"
@@ -23,8 +24,9 @@
           name="password"
           class="input"
         />
-        <br />
+        <span class="error-text" *ngIf="f.controls.password.invalid && f.controls.password.touched">Password is invalid</span>
       <button nbButton status="primary" type="submit" [disabled]="f.invalid" (click)="onSubmitLogin(f)">Login</button>
+      <span class="error-text" *ngIf="this.authError">Error login: {{ errorMessage }}</span>
     </form>
 </nb-card>
 </section>

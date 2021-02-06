@@ -1,9 +1,16 @@
 <!-- <div *ngIf="chart">
     <canvas id="canvas">{{ chart }}</canvas>
 </div> -->
-<canvas id="myChart" width="1320" height="400"></canvas>
-<nb-select [(ngModel)]="selectedProcedure" placeholder="Select Procedure">
-    <nb-option *ngFor="let procedure of procedures" [value]="procedure">{{procedure}}</nb-option>
+<div class="chartLayout">
+  <span class="dashboardTitle" style="padding-right:20px">Please select procedure: </span>
+  <nb-select [(ngModel)]="selectedProcedure" placeholder="Select Procedure" style="padding-right:20px">
+    <nb-option *ngFor="let procedure of procedures" [value]="procedure">{{
+      procedure
+    }}</nb-option>
     <!-- <nb-option value="0">Option 0</nb-option> -->
   </nb-select>
-  <button nbButton status="primary" (click)="onApplyFilter(selectedProcedure)">Apply Filter</button>
+  <button nbButton status="primary" (click)="onApplyFilter(selectedProcedure)">
+    Apply Filter
+  </button>
+  <canvas id="myChart" width="1320" height="400"></canvas>
+</div>

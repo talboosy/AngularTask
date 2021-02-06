@@ -66,7 +66,7 @@ router.post("/login", function (req, res) {
 
     var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
     if (!passwordIsValid)
-      return res.status(401).send({ auth: false, token: null });
+      return res.status(401).send({ auth: false, token: null, message:"Password is invalid" });
 
     var token = jwt.sign({ id: user._id }, config.secret, {
       expiresIn: 86400, // expires in 24 hours
@@ -80,47 +80,6 @@ router.get("/logout", function (req, res) {
   res.status(200).send({ auth: false, token: null });
 });
 
-// router.post('/users/login', async (req,res ) => {
-//     try {
-//         console.log('success')
-//         const email = req.body.email
-//         const password = req.body.password
-//         console.log("email: ", email)
-//         console.log("password: ", password)
-//         //add validation
-//         const user = await User.findByCredentials(email, password)
-//         const token = await user.generateAuthToken()
-//         res.send({email, token})
-//     } catch (e) {
-//         res.status(400).send(e)
-//     }
-// })
-
-// router.post('/users/logout', auth, async (req,res) => {
-//     try{
-//         req.user.tokens = req.user.tokens.filter((token) => {
-//             return token.token !== req.token
-//         })
-//         await req.user.save()
-//         res.send()
-//     } catch(e) {
-//         res.status(500).send()
-//     }
-// })
-
-// router.post('/users/logoutAll', auth, async(req,res) => {
-//     try {
-//         req.user.tokens = []
-//         await req.user.save()
-//         res.send()
-//     } catch (e) {
-//         res.status(500).send()
-//     }
-// })
-
-// router.get('/users/me', auth, async (req, res) => {
-//     res.send(req.user)
-// })
 
 router.get("/users/:id", async (req, res) => {
   const _id = req.params.id;

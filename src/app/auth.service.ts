@@ -19,6 +19,7 @@ export class AuthService {
   private isLoggedIn = new BehaviorSubject<boolean>(false);
   public isLoggedIn$ = this.isLoggedIn.asObservable();
   public data: any;
+  public currentUser: any;
   user = new Subject<User>();
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -28,7 +29,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    console.log("client: ", email,password)
+    this.currentUser = email;
     return this.http.post<AuthResponseData>('/api/auth/login', {
       "email": email,
       "password": password
@@ -41,7 +42,7 @@ export class AuthService {
   }
 
   logout() {
-      return this.http.get('/api/auth/logout', {}).subscribe(res => {console.log(res)})
+      return this.http.get('/api/auth/logout', {})
   }
 
   getData() {
@@ -50,7 +51,6 @@ export class AuthService {
 
    getUserData() {
      this.http.get('/api/datas').subscribe(res => {
-       console.log(res)
        this.data = res;
      })
    }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NbThemeModule, NbSidebarModule, NbLayoutModule, NbButtonModule, NbMenuModule, NbInputModule, NbCardModule, NbSelectModule } from '@nebular/theme';
+import { NbThemeModule, NbSidebarModule, NbLayoutModule, NbButtonModule, NbMenuModule, NbInputModule, NbCardModule, NbSelectModule, NbAlertModule, NbUserModule } from '@nebular/theme';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
@@ -11,7 +11,6 @@ import { LoginComponent } from './login/login.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
-import { ChartsService } from './charts.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartComponent } from './chart/chart.component';
 
@@ -44,10 +43,12 @@ import { ChartComponent } from './chart/chart.component';
     ReactiveFormsModule,
     NbCardModule,
     HttpClientModule,
-    NbSelectModule
+    NbSelectModule,
+    NbAlertModule,
+    NbUserModule
     // NbMenuModule.forRoot()
   ],
-  providers: [ChartsService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

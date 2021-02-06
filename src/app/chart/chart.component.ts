@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { ChartsService } from '../charts.service';
 import { Chart } from 'chart.js';
 import { AuthService } from '../auth.service';
 import * as _ from 'lodash';
@@ -21,7 +20,6 @@ export class ChartComponent implements OnInit {
   values: any;
 
   constructor(
-    private chartService: ChartsService,
     private elementRef: ElementRef,
     private service: AuthService
   ) {}
@@ -30,25 +28,20 @@ export class ChartComponent implements OnInit {
     this.procedures = [];
     for (var i = 0; i < data.length; i++) {
       if (this.procedures.indexOf(data[i].procedure) !== -1)
-        console.log('duplicate');
+        continue
       else this.procedures.push(data[i].procedure);
     }
-    console.log(this.procedures)
   }
 
   onApplyFilter(selectedProcedure: any) {
-    console.log(selectedProcedure)
     var arr = _.filter(this.data, function(res){
       if(res.procedure == selectedProcedure) return res;
     })
-    console.log(arr)
     this.labels = this.extractLabels(arr)
     this.values = this.extractValues(arr)
     this.myChart.data.labels = this.labels
     this.myChart.data.datasets[0].data = this.values
     
-    console.log(this.labels)
-    console.log(this.values)
     this.myChart.update()
   }
 
@@ -72,7 +65,6 @@ export class ChartComponent implements OnInit {
     this.data = this.service.data;
     this.getProcedures(this.data)
     if (this.data) {
-      console.log(this.data[0].procedure);
       this.canvas = document.getElementById('myChart');
       this.ctx = this.canvas.getContext('2d');
       this.myChart = new Chart(this.ctx, {
@@ -91,13 +83,29 @@ export class ChartComponent implements OnInit {
                 Number(this.data[2].value),
                 this.data[3].value,
               ],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
               borderWidth: 1,
             },
           ],
         },
         options: {
           legend: {
-            display: true,
+            display: false,
           },
           responsive: false,
         },

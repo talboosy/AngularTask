@@ -15,7 +15,13 @@
 }
 .row {
   display: flex;
-  width: 100%;
+  justify-content: center; align-items: center;
+}
+
+.brand {
+  display: flex;
+  font-size: 22px;
+  font-weight: 500;
 }
 
 app-header {

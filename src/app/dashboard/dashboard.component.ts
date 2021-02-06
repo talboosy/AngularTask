@@ -13,7 +13,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     var isAuthenticated = this.service.verifyToken()
-    console.log(isAuthenticated)
     if(!isAuthenticated){
       this.router.navigate([''])
     }
@@ -21,7 +20,6 @@ export class DashboardComponent implements OnInit {
 
   getData() {
     const data = this.service.getUserData()
-    // console.log(data)
   }
 
 }

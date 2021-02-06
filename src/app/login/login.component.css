@@ -19,3 +19,11 @@
     margin-bottom: 10px;
 }
 
+form {
+    display: grid !important;
+}
+
+.error-text {
+    color: red;
+    font-size: 12px;
+}

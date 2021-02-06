@@ -9,7 +9,8 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  // loggedIn= false;
+  authError = false;
+  errorMessage: any;
   constructor(private router: Router, private service:AuthService) { }
 
   ngOnInit(): void {
@@ -17,13 +18,20 @@ export class LoginComponent implements OnInit {
 
   onSubmitLogin(form: NgForm) {
     this.service.login(form.value.email, form.value.password).subscribe((response)=> {
-      console.log(response)
       const token = response.token
       this.service.isLogged()
       localStorage.setItem('x-auth-token', token);
       this.router.navigate(['dashboard']);
   }, error => {
-    console.log(error);
+    if(error.status == 404){
+      this.authError = true
+      this.errorMessage = error.error
+    }
+    else if (error.status == 401) {
+      this.authError = true
+      this.errorMessage = error.error.message
+    }
+    
   })
     
     
