@@ -1,5 +1,11 @@
 <nb-layout>
-
+  <nb-sidebar *ngIf="service.verifyToken()" state="compacted" style="width: 4.2rem; line-height: 4.5rem;">
+    <nb-icon icon="plus-square-outline" style="font-size: 1.7rem; margin-right: 1rem; cursor: pointer;" nbTooltip="Add new"></nb-icon>  
+    <nb-icon icon="home-outline" style="font-size: 1.7rem; margin-right: 1rem; cursor: pointer;" nbTooltip="Home"></nb-icon>  
+    <nb-icon icon="activity-outline" style="font-size: 1.7rem; margin-right: 1rem; cursor: pointer;" nbTooltip="Statistics"></nb-icon>  
+    <nb-icon icon="calendar-outline" style="font-size: 1.7rem; margin-right: 1rem; cursor: pointer;" nbTooltip="Calendar"></nb-icon>  
+    <nb-icon (click)="onLogout()" icon="log-out" style="font-size: 1.7rem; margin-right: 1rem; cursor: pointer;" nbTooltip="Logout"></nb-icon>
+  </nb-sidebar>
   <nb-layout-header>
     <app-header style="width: 100%;"></app-header>
 </nb-layout-header>

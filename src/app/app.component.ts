@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from './auth.service';
 export class AppComponent implements OnInit{
   isLoggedIn= false;
   public globalData: any;
-  constructor(private service:AuthService) { 
+  constructor(public service:AuthService, private router:Router) { 
 
   }
 
@@ -19,6 +20,12 @@ export class AppComponent implements OnInit{
     this.getDataFromAPI();
     this.service.data = this.service.getUserData()
     
+  }
+  onLogout() {
+    this.service.isLoggedOut();
+    this.service.logout();
+    this.router.navigate(['']);
+    localStorage.setItem('x-auth-token', '');
   }
 
   getDataFromAPI() {
